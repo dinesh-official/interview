@@ -1,50 +1,62 @@
-1) What is the role of an SRE in a product engineering company?
+### **1️⃣ What is the role of an SRE in a product engineering company?**
 
-```
-An SRE ensures that the product is reliable, scalable, and always available for users.
-They automate operations, monitor systems, handle production issues, and work closely with developers
-so new features can be released safely without impacting reliability
-```
-2) How is SRE different from DevOps in real projects?
-```
-DevOps is about culture and automation, while SRE is about applying engineering to keep systems reliable and scalable.
-```
-3) How do you implement SLOs for customer-facing applications?
-```
-First, I identify what users care about, like availability and latency.
-Second, I set clear SLO targets, for example 99.9% responses under 300ms.
-Third, I monitor and alert on SLOs using tools like Prometheus or Grafana.
-Fourth, I use error budgets to control risk and slow releases if needed.
-Finally, I review incidents and improve based on user impact.
-```
-4) What is an error budget and how do you use it practically?
-```
-An error budget is the amount of acceptable failure a system can have while still meeting its SLO.
-It is calculated from the SLO and is used to balance reliability and speed of change
-```
-5) How do you measure reliability in production?
-```
-I measure reliability using user-focused metrics called SLIs like availability, latency, and error rate.
-Then I set SLO targets, monitor them with tools like Prometheus or Grafana,
-use error budgets to control risk, and continuously improve based on incidents.
-```
-6) How do you reduce operational toil?
-```
-I reduce operational toil by automating repetitive tasks.
-For example, I’ve written small scripts to help with deployments and set up alerts so
-I don’t have to manually check systems all the time. This way,
-I can focus more on solving real problems instead of doing the same manual work over and over.
-```
-7) When do you say NO to a release?
-```
-I would say no to a release if the system is unstable or key SLOs are not being met. For example,
-if the error budget is exhausted, critical alerts are failing, or production incidents are happening,
-I would pause the release until the issues are resolved to avoid impacting users.
-```
-8) How do you bring reliability culture to dev teams?
-```
-I bring a reliability culture to dev teams by sharing metrics and making reliability visible. For example,
-I track SLOs and error budgets and discuss them in team meetings so everyone knows how their code affects users.
-I also suggest small improvements, like adding monitoring, alerts, or automated tests,
-and encourage teams to fix issues proactively before they become outages.
-```
+> **“An SRE ensures the product runs reliably, is scalable, and available for users. They automate repetitive tasks, monitor systems, handle production issues, and work with developers so features can be released safely.”**
+
+**Memory trick:** Reliability + Automation + Collaboration
+
+---
+
+### **2️⃣ How is SRE different from DevOps in real projects?**
+
+> **“DevOps is a culture focused on collaboration, automation, and faster delivery. SRE applies engineering to operations with a focus on reliability, using SLOs and error budgets. In real projects, DevOps builds pipelines and processes; SRE ensures the system stays stable while releasing features.”**
+
+**Memory trick:** DevOps = culture, SRE = engineering reliability
+
+---
+
+### **3️⃣ How do you implement SLOs for customer-facing applications?**
+
+> **“I identify user-focused SLIs like availability, latency, error rate, and throughput. Then I define SLO targets, monitor them with Prometheus/Grafana, use error budgets to balance releases and reliability, and review incidents to improve.”**
+
+**Memory trick:** SLIs → SLOs → Monitor → Error Budgets → Improve
+
+---
+
+### **4️⃣ What is an error budget and how do you use it practically?**
+
+> **“An error budget is the amount of acceptable failure while meeting SLOs. For example, if availability is 99.9%, the system can fail 0.1% of the time. I use it to decide whether to release features or pause releases, and to prioritize fixing issues before they impact users.”**
+
+**Memory trick:** Allowed failures → guide releases → fix problems
+
+---
+
+### **5️⃣ How do you measure reliability in production?**
+
+> **“I measure reliability using SLIs like availability, latency, error rate, and throughput. I track these against SLOs, monitor them with tools, use error budgets to manage risk, and review incidents to continuously improve.”**
+
+**Memory trick:** SLIs → SLOs → Monitor → Error Budgets → Improve
+
+---
+
+### **6️⃣ How do you reduce operational toil?**
+
+> **“I reduce toil by automating repetitive tasks like deployments and monitoring, creating small scripts or CI/CD improvements, and setting up alerts so I don’t have to manually check systems.”**
+
+**Memory trick:** Automate repetitive work → use CI/CD → set up alerts
+
+---
+
+### **7️⃣ When do you say NO to a release?**
+
+> **“I say no when the system is unstable, SLOs are not met, or the error budget is exhausted. Releasing under these conditions could affect users, so I pause until issues are fixed.”**
+
+**Memory trick:** Unstable system → SLOs failing → error budget exhausted
+
+---
+
+### **8️⃣ How do you bring reliability culture to dev teams?**
+
+> **“I make reliability visible by sharing SLOs and error budgets in meetings. I suggest small improvements like monitoring, alerts, or tests, and encourage teams to fix issues proactively before they affect users.”**
+
+**Memory trick:** Make visible → suggest improvements → fix early
+
