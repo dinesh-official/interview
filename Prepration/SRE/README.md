@@ -60,13 +60,15 @@
 
 **Memory trick:** Make visible → suggest improvements → fix early
 
-
-### ** Explain Kubernetes architecture.**
+---
+2️⃣ Kubernetes (VERY COMMON – HANDS-ON FOCUS)
+---
+### **Explain Kubernetes architecture.**
 ### **Kubernetes Architecture – Simple Explanation**
 
 **Kubernetes** is a system to manage containerized applications across clusters of machines. Its architecture has **two main components**:
 
----
+
 
 ### **1️⃣ Control Plane (Master)**
 
