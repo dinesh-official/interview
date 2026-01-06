@@ -160,3 +160,107 @@ How does HPA work?
 ---
 HPA automatically scales the number of pods in a deployment or replica set based on resource usage, like CPU, memory, or custom metrics. It continuously monitors the metrics and increases or decreases pods to maintain the target performance.
 
+---
+Difference between requests vs limits?
+---
+
+“Requests are the minimum CPU or memory a container is guaranteed to get. Limits are the maximum CPU or memory a container is allowed to use. Kubernetes schedules pods based on requests, and prevents them from exceeding limits.” ✅
+
+
+Requests → minimum guaranteed → used for scheduling
+
+Limits → maximum allowed → prevents overuse
+
+---
+How do you handle OOMKilled pods?
+---
+
+An OOMKilled pod means the container ran out of memory. I first check the pod’s events using kubectl describe pod <pod-name> and logs to confirm it’s an OOM issue. Then I check the pod’s memory requests and limits. To fix it, I either increase the memory limit, optimize the application to use less memory, or add resource requests/limits if missing.
+
+---
+How do you perform zero-downtime deployments?
+---
+Zero-downtime deployments ensure users don’t experience service interruptions when new versions are deployed. In Kubernetes, I use rolling updates by gradually replacing old pods with new ones, while keeping the desired number of pods available. I also use readiness probes so only healthy pods serve traffic, and monitor metrics to rollback if there are issues.
+
+---
+How do you secure Kubernetes workloads?
+---
+
+I secure Kubernetes workloads by following best practices: use Role-Based Access Control (RBAC) to limit permissions, run containers with least privilege, enable network policies to control traffic, scan images for vulnerabilities, and keep secrets safe with Kubernetes Secrets or external vaults. I also regularly update clusters and use monitoring to detect suspicious activity.
+
+---
+How do you manage secrets in Kubernetes?
+---
+
+In Kubernetes, I manage secrets using the built-in Secrets object to store sensitive data like passwords, API keys, and tokens. I make sure they are mounted as environment variables or volumes, avoid hardcoding them in manifests
+
+---
+How do you debug intermittent latency in Kubernetes?
+---
+
+To debug latency, I check pod and node metrics, look at logs for slow requests, check dependencies like databases or APIs, verify network connectivity, and use tracing or profiling if needed.
+
+
+
+## 3️⃣ AWS / Cloud (HIGH PROBABILITY)
+
+---
+Design a highly available system on AWS.
+---
+
+I use multiple AZs with ELB, Auto Scaling, highly available storage like RDS/S3, and monitor with CloudWatch, using Route 53 for DNS failover
+
+---
+How do you design systems for multi-AZ resilience?
+---
+
+I deploy apps and databases across multiple AZs with a load balancer, Auto Scaling, HA storage, and monitoring to ensure the system stays available even if one AZ fails.
+
+---
+What is the difference between ALB and NLB?
+---
+ALB (Application Load Balancer) works at Layer 7 and is ideal for HTTP/HTTPS traffic. It can route requests based on URL, host, headers, or path. NLB (Network Load Balancer) works at Layer 4 and is ideal for TCP/UDP traffic. It’s super fast, handles millions of connections, and routes traffic to targets based on IP and port.
+
+---
+How do you design disaster recovery?
+---
+
+I replicate critical systems across regions, set RTO/RPO, automate backups, and test failover regularly to ensure fast disaster recovery.
+
+---
+Active-active vs active-passive?
+---
+Active-Active means multiple systems or regions are running simultaneously and sharing traffic. If one fails, the others keep serving users without downtime. Active-Passive means one system handles traffic while the other is on standby; if the active fails, the passive takes over.
+
+---
+How do you handle traffic spikes?
+---
+To handle traffic spikes, I design systems to automatically scale using tools like Kubernetes HPA (Horizontal Pod Autoscaler) or AWS Auto Scaling. I use load balancers to distribute traffic across healthy nodes or instances, cache frequent requests with Redis or CloudFront, and monitor metrics to anticipate spikes. For extreme cases, I use queuing systems like SQS or Kafka to smooth the load.
+
+---
+Explain VPC architecture.
+---
+
+A VPC (Virtual Private Cloud) is a virtual network in AWS where you launch your resources. It consists of subnets (public and private), route tables to control traffic, internet gateways for external access, NAT gateways for private subnet outbound access, security groups for instance-level security, and network ACLs for subnet-level security. This setup isolates resources and allows secure communication between them.
+
+---
+How do you secure AWS resources?
+---
+I secure AWS resources using IAM least privilege, MFA, encryption, network controls, monitoring, and following best practices like key rotation.
+
+---
+How do you control cost vs reliability?
+---
+
+I prioritize reliability for critical workloads and use cost-efficient solutions for non-critical ones, while monitoring and auto-scaling to optimize spending.
+
+---
+How does EKS differ from self-managed Kubernetes?
+---
+
+EKS (Elastic Kubernetes Service) is a managed Kubernetes service from AWS. AWS handles the control plane, upgrades, and patching, so you can focus on deploying apps. In self-managed Kubernetes, you have to set up, manage, and maintain the control plane, handle upgrades, and ensure high availability yourself. EKS reduces operational overhead, while self-managed gives full control.
+
+## 4️⃣ Monitoring & Observability (ALWAYS ASKED)
+---
+
+---
