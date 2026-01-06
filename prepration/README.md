@@ -19,16 +19,32 @@ Finally, I review incidents and improve based on user impact.
 ```
 4) What is an error budget and how do you use it practically?
 ```
+An error budget is the amount of acceptable failure a system can have while still meeting its SLO.
+It is calculated from the SLO and is used to balance reliability and speed of change
 ```
 5) How do you measure reliability in production?
 ```
+I measure reliability using user-focused metrics called SLIs like availability, latency, and error rate.
+Then I set SLO targets, monitor them with tools like Prometheus or Grafana,
+use error budgets to control risk, and continuously improve based on incidents.
 ```
 6) How do you reduce operational toil?
 ```
+I reduce operational toil by automating repetitive tasks.
+For example, I’ve written small scripts to help with deployments and set up alerts so
+I don’t have to manually check systems all the time. This way,
+I can focus more on solving real problems instead of doing the same manual work over and over.
 ```
 7) When do you say NO to a release?
 ```
+I would say no to a release if the system is unstable or key SLOs are not being met. For example,
+if the error budget is exhausted, critical alerts are failing, or production incidents are happening,
+I would pause the release until the issues are resolved to avoid impacting users.
 ```
 8) How do you bring reliability culture to dev teams?
 ```
+I bring a reliability culture to dev teams by sharing metrics and making reliability visible. For example,
+I track SLOs and error budgets and discuss them in team meetings so everyone knows how their code affects users.
+I also suggest small improvements, like adding monitoring, alerts, or automated tests,
+and encourage teams to fix issues proactively before they become outages.
 ```
