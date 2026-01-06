@@ -133,6 +133,10 @@ Readiness probe: App is still starting up → traffic is not sent until ready.
 ---
 How do you troubleshoot a failing pod?
 ---
+
+When a pod is failing, I first check its status with kubectl get pods and then look at the events using kubectl describe pod <pod-name> to see why it’s failing. Next, I check the container logs with kubectl logs <pod-name> to find errors. I also verify configs, environment variables, secrets, and resource limits. Finally, I fix the root cause and restart or redeploy the pod.
+
+
 Step-by-step memory trick
 
 Check pod status → kubectl get pods
@@ -145,6 +149,10 @@ Check configs & env → secrets, ConfigMaps, resources
 
 Fix & restart → redeploy or scale
 
+---
+What happens if a node goes down?
+---
 
+If a node goes down, Kubernetes detects it using the node controller. All pods on that node are marked as ‘NotReady.’ Depending on their configuration, the scheduler automatically tries to reschedule the pods on other healthy nodes to keep the application running.
 
 
