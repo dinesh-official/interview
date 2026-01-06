@@ -155,4 +155,8 @@ What happens if a node goes down?
 
 If a node goes down, Kubernetes detects it using the node controller. All pods on that node are marked as ‘NotReady.’ Depending on their configuration, the scheduler automatically tries to reschedule the pods on other healthy nodes to keep the application running.
 
+---
+How does HPA work?
+---
+HPA automatically scales the number of pods in a deployment or replica set based on resource usage, like CPU, memory, or custom metrics. It continuously monitors the metrics and increases or decreases pods to maintain the target performance.
 
