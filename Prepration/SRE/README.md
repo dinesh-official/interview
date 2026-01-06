@@ -1,6 +1,6 @@
 ### **1️⃣ What is the role of an SRE in a product engineering company?**
 
-> **“An SRE ensures the product runs reliably, is scalable, and available for users. They automate repetitive tasks, monitor systems, handle production issues, and work with developers so features can be released safely.”**
+> **“An SRE ensures that the product is reliable, available, and scalable for users. They monitor production systems, automate repetitive operational work, handle incidents, and work closely with developers so new features can be released safely without impacting users.”**
 
 **Memory trick:** Reliability + Automation + Collaboration
 
