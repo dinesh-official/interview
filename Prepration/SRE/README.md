@@ -95,4 +95,56 @@
 
 
 
+---
+Why do pods go into CrashLoopBackOff?
+---
+
+### **CrashLoopBackOff – Simple Explanation**
+
+> **“A pod goes into CrashLoopBackOff when its container keeps crashing after starting. Kubernetes tries to restart it, but if it keeps failing repeatedly, it stops and shows CrashLoopBackOff.”**
+
+---
+
+### **Common reasons for this**
+
+1. **Application errors** – The app inside the container crashes immediately (e.g., missing file, wrong config, or code bug).
+2. **Incorrect command or entrypoint** – The container’s startup command fails.
+3. **Resource limits** – Container exceeds CPU or memory limits and gets killed.
+4. **Dependency issues** – Required service, database, or config isn’t available.
+5. **Crash on health check** – Readiness or liveness probes fail repeatedly.
+
+---
+Difference between readiness and liveness probes?
+--- 
+“A liveness probe checks if a container is alive. If it fails, Kubernetes restarts the container. A readiness probe checks if a container is ready to serve traffic. If it fails, Kubernetes stops sending requests to it, but doesn’t restart it.”
+
+Memory Trick (easy to recall)
+
+Liveness → “Is it alive?” → restart if dead
+
+Readiness → “Is it ready?” → remove from service if not ready
+
+Quick Example
+
+Liveness probe: Your app crashes or hangs → container restarts.
+
+Readiness probe: App is still starting up → traffic is not sent until ready.
+
+---
+How do you troubleshoot a failing pod?
+---
+Step-by-step memory trick
+
+Check pod status → kubectl get pods
+
+Check events → kubectl describe pod <pod>
+
+Check logs → kubectl logs <pod>
+
+Check configs & env → secrets, ConfigMaps, resources
+
+Fix & restart → redeploy or scale
+
+
+
 
